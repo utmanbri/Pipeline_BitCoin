@@ -11,6 +11,14 @@ pipeline {
         git branch: 'main', url: 'https://github.com/utmanbri/Pipeline_BitCoin.git'
       }
     }
+  
+    stage('Initialize') {
+      steps {
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+      }
+    }
+  
     stage('Building image') {
       steps {
         script {  
@@ -18,6 +26,7 @@ pipeline {
         }
       }
     }
+  
     stage('Deploy Image') {
       steps {
         script {
@@ -27,6 +36,7 @@ pipeline {
         }
       }
     }
+  
     stage('Remove Unused docker image') {
       steps {
         sh "docker rmi '${registry}:${BUILD_NUMBER}'"
