@@ -14,7 +14,7 @@ pipeline {
     stage('Building image') {
       steps {
         script {
-          dockerImage = docker.build("${docker.io/brittanysaic}:${1}")
+          sh 'docker build -t nginx:stable-alpine3.17-slim ./docker'
         }
       }
     }
@@ -29,7 +29,7 @@ pipeline {
     }
     stage('Remove Unused docker image') {
       steps {
-        sh "docker rmi ${registry}:${BUILD_NUMBER}"
+        sh "docker rmi '${registry}:${BUILD_NUMBER}'"
       }
     }
   }
