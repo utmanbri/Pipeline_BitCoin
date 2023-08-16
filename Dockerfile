@@ -1,8 +1,7 @@
-FROM ubuntu:latest
-RUN apt-get update -y
-RUN apt-get install -y python3-pip python-dev build-essential
-COPY . /bitcoin-app
-WORKDIR /bitcoin-app
-RUN pip3 install -r requirements.txt
-ENTRYPOINT ["python"]
-CMD ["bitcoin-app.py"]
+FROM nginx:stable-alpine3.17-slim
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+EXPOSE 5000
+ENTRYPOINT [ "python" ]
+CMD [ "bitcoin-app.py" ]
