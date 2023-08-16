@@ -13,9 +13,7 @@ pipeline {
     }
     stage('Building image') {
       steps {
-        dir(/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin) {
-          script{
-            dockerImage = docker.build(nginx:stable-alpine3.17-slim)
+        dockerImage = docker.build(nginx:stable-alpine3.17-slim)
         }
       }
     }
