@@ -1,5 +1,5 @@
 pipeline {
-  environment { \\set Credential variables and a dockerimage name variable 
+  environment { //set Credential variables and a dockerimage name variable 
     registry = "brittanysaic/appfac1_repo"
     registryCredential = 'DockerHub'
     dockerImage = ''
@@ -12,14 +12,14 @@ pipeline {
 
         }
     }
-    stage('Building image') { \\ build the image using Dockerfile in the cloned repo
+    stage('Building image') { //build the image using Dockerfile in the cloned repo
       steps{
           script{
             dockerImage = docker.build registry + ":$BUILD_NUMBER"
           }
       }
     }
-    stage('Deploy Image') { \\ deploy image into DockerHub
+    stage('Deploy Image') { //deploy image into DockerHub
         steps{
             script {
                 docker.withRegistry( '', registryCredential ) {
@@ -28,7 +28,7 @@ pipeline {
             }
         }
     }
-    stage('Remove Unused docker image') { \\ remove unused image
+    stage('Remove Unused docker image') { //remove unused image
         steps{
             sh "docker rmi $registry:$BUILD_NUMBER"
         }
