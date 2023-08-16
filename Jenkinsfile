@@ -13,7 +13,8 @@ pipeline {
     }
     stage('Building image') {
       steps {
-        dockerImage = docker.build("nginx:stable-alpine3.17-slim")
+        script {  
+          dockerImage = docker.build("nginx:stable-alpine3.17-slim")
         }
       }
     }
