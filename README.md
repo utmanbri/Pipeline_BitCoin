@@ -1,23 +1,19 @@
 # Bit-coin-currency
 ## Description 
 ### Web App to output the current BitCoine price and the average price of the last 10 minutes.
-## To run python app do in cmd:
+## To run python app, open new terminal in VS Code and execute the following commands:
 ```
-pip install -r requirements.txt
-```
-Or use
-```
-pip3 install -r requirements.txt
+> pip install -r requirements.txt
 ```
 and then do
 ```
-py bitcoin-app.py
+> .\bitcoin-app.py
 ```
 ## to Build the image and run it do:
 ### ps: use file Dockerfile for cmd but change it's name to 'Dockerfile'
 ```
-docker build -t bitcoin-docker:latest .
-docker run -d -p 5000:5000 bitcoin-docker
+> docker build -t bitcoin-docker:latest .
+> docker run -d -p 3000:3000 bitcoin-docker
 ```
 
 ### the web app sude look like this:
