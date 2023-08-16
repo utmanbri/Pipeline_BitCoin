@@ -12,8 +12,8 @@ and then do
 ## to Build the image and run it do:
 ### ps: use file Dockerfile for cmd but change it's name to 'Dockerfile'
 ```
-> docker build -t bitcoin-docker:latest .
-> docker run -d -p 3000:3000 bitcoin-docker
+> docker build -t nginx:stable-alpine3.17-slim .
+> docker run -d -p 3000:3000 nginx:stable-alpine3.17-slim
 ```
 
 ### the web app sude look like this:
