@@ -1,7 +1,6 @@
-FROM nginx:stable-alpine3.17-slim
+FROM python:3.8-slim-buster
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
-EXPOSE 8000
-ENTRYPOINT [ "python" ]
-CMD ["python", "bitcoin-app.py"]
+EXPOSE 5000
+CMD ["python3", "bitcoin-app.py"]
