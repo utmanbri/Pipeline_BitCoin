@@ -12,8 +12,8 @@ and then do
 ## to Build the image and run it do:
 ### ps: use file Dockerfile for cmd but change it's name to 'Dockerfile'
 ```
-> docker build -t nginx:stable-alpine3.17-slim .
-> docker run -d -p 3000:3000 nginx:stable-alpine3.17-slim
+> docker build -t python:3.12.0rc1-bookworm .
+> docker run -d -p 5000:5000 python:3.12.0rc1-bookworm
 ```
 
 ### the web app sude look like this:
