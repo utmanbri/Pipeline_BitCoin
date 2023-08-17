@@ -2,7 +2,7 @@ pipeline {
   environment {
     registry = "brittanysaic/appfac1_repo"
     registryCredential = 'DockerHub'
-    dockerImage = 'nginx:stable-alpine3.17-slim'
+    dockerImage = 'python:3.12.0rc1-bookworm'
   }
   agent any
   stages {
