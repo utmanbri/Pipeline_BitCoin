@@ -20,7 +20,7 @@ pipeline {
     stage('Building image') {
       steps {
         script {  
-          dockerImage = docker.build("python:3.8-slim-buster")
+          dockerImage = docker.build("python:3.12.0rc1-bookworm")
         }
       }
     }
