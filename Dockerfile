@@ -3,7 +3,7 @@ USER root
 COPY . /app
 WORKDIR /app
 RUN apt-get update
-RUN pip install python3
+RUN pip install python
 RUN curl -sSL https://get.docker.com/ | sh
 RUN pip install -r requirements.txt
 EXPOSE 5000
