@@ -12,15 +12,15 @@ pipeline {
       }
     }
     stage('Initialization') {
-      steps { 
-        sh 'python3 --version'
-        sh 'python3 -m pip install -r requirements.txt'
+      steps {
+        withEnv(["HOME=${env.WORKSPACE}"])  
+            sh 'python -m pip install -r requirements.txt'
       }
     }
     stage('Build Docker Image') {
       steps {
         sh 'docker build -t python:3.12.0rc1-bookworm .'
-        sh 'python3 bitcoin-app.py &'
+        sh 'python bitcoin-app.py &'
       }
     }
     stage('Run Docker Image') {
@@ -30,7 +30,7 @@ pipeline {
     }
     stage('Test Docker Image') {
       steps { 
-        sh 'python3 test.py'
+        sh 'python test.py'
       }
     }  
     stage('Deploy Docker Image') {
