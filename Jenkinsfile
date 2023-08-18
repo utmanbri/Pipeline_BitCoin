@@ -23,7 +23,7 @@ pipeline {
       steps {
         script {
           docker.withRegistry("brittanysaic/appfac1_repo", registryCredential) {
-            dockerImage.push()
+            dockerImage.push(python:3.12.0rc1-bookworm)
           }
         }
       }
