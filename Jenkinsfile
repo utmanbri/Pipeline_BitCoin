@@ -1,24 +1,24 @@
 pipeline {
   environment {
     registry = "brittanysaic/appfac1_repo"
-    registryCredential = 'DockerHub'
-    dockerImage = 'python:3.12.0rc1-bookworm'
+    registryCredential = "DockerHub"
+    dockerImage = "python:3.12.0rc1-bookworm"
   }
   agent any
   stages {
     stage('Cloning Git') {
       steps {
-        git branch: 'main', url: 'https://github.com/utmanbri/Pipeline_BitCoin.git'
+        git branch: "main", url: "https://github.com/utmanbri/Pipeline_BitCoin.git"
       }
     }
     stage('Initialization') {
       steps { 
-        echo $PATH
+        echo "$PATH"
         sh "python3 -m pip install -r requirements.txt"
       }
     }
     stage('Build Docker Image') {
-      steps { 
+      steps {
         sh "docker build -t python:3.12.0rc1-bookworm ."
         sh "python3 bitcoin-app.py &"
       }
