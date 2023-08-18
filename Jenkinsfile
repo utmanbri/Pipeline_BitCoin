@@ -13,8 +13,9 @@ pipeline {
     }
     stage('Initialization') {
       steps {
-        withEnv(["HOME=${env.WORKSPACE}"])  
-            sh 'python -m pip install -r requirements.txt'
+        withEnv(["HOME=${env.WORKSPACE}"]) {
+          sh 'python -m pip install -r requirements.txt'
+        }
       }
     }
     stage('Build Docker Image') {
