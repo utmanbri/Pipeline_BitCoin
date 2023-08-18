@@ -15,7 +15,7 @@ pipeline {
       steps {
         script {  
           //dockerImage = docker.build('python:3.12.0rc1-bookworm')
-          sh 'bitcoin-app.py'
+          sh 'python3 bitcoin-app.py &'
         }
       }
     }
