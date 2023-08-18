@@ -13,34 +13,34 @@ pipeline {
     }
     stage('Initialization') {
       steps { 
-        echo "$PATH"
-        sh "python3 -m pip install -r requirements.txt"
+        sh 'python3 --version'
+        sh 'python3 -m pip install -r requirements.txt'
       }
     }
     stage('Build Docker Image') {
       steps {
-        sh "docker build -t python:3.12.0rc1-bookworm ."
-        sh "python3 bitcoin-app.py &"
+        sh 'docker build -t python:3.12.0rc1-bookworm .'
+        sh 'python3 bitcoin-app.py &'
       }
     }
     stage('Run Docker Image') {
       steps { 
-        sh "docker run -d -p 5000:5000 python:3.12.0rc1-bookworm"
+        sh 'docker run -d -p 5000:5000 python:3.12.0rc1-bookworm'
       }
     }
     stage('Test Docker Image') {
       steps { 
-        sh "python3 test.py"
+        sh 'python3 test.py'
       }
     }  
     stage('Deploy Docker Image') {
       steps {
-        sh "docker push ${registry}:${dockerImage}"
+        sh 'docker push ${registry}:${dockerImage}'
       }
     }
     stage('Remove Unused docker image') {
       steps {
-        sh "docker rmi ${registry}:${BUILD_NUMBER}"
+        sh 'docker rmi ${registry}:${BUILD_NUMBER}'
       }
     }
   }
