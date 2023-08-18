@@ -3,8 +3,9 @@ USER root
 COPY . /app
 WORKDIR /app
 RUN apt-get update
+RUN apt-get pip
 RUN pip install python
+RUN pip install Flask
 RUN curl -sSL https://get.docker.com/ | sh
-RUN pip install -r requirements.txt
 EXPOSE 5000
 CMD ["python3", "bitcoin-app.py"]
